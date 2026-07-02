@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>STM32 on 王淼 | Miao Wang</title>
+    <link>http://localhost:1313/tags/stm32/</link>
+    <description>Recent content in STM32 on 王淼 | Miao Wang</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/stm32/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自行车测速与避障预警系统</title>
+      <link>http://localhost:1313/projects/bicycle-speed-tester/</link>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/bicycle-speed-tester/</guid>
+      <description>&lt;h2 id=&#34;项目概述&#34;&gt;项目概述&lt;/h2&gt;
+&lt;p&gt;基于 STM32F103C8T6 的自行车智能测速系统，集成 M/T 等精度测速算法与超声波后方避障预警。&lt;/p&gt;
+&lt;h2 id=&#34;我的角色&#34;&gt;我的角色&lt;/h2&gt;
+&lt;p&gt;独立完成全流程——硬件选型、原理图与 PCB 设计、焊接调试、外设驱动开发、算法移植、系统标定与验证。&lt;/p&gt;
+&lt;h2 id=&#34;硬件架构&#34;&gt;硬件架构&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;主控&lt;/strong&gt;：STM32F103C8T6（ARM Cortex-M3）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;测速传感器&lt;/strong&gt;：3144E 开关型霍尔传感器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避障模块&lt;/strong&gt;：HC-SR04 超声波传感器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;显示&lt;/strong&gt;：0.96寸 OLED&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交互&lt;/strong&gt;：EC11 旋转编码器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;报警&lt;/strong&gt;：S8550 驱动蜂鸣器（分级声光报警）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;测试与验证&#34;&gt;测试与验证&lt;/h2&gt;
+&lt;h3 id=&#34;硬件调试&#34;&gt;硬件调试&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使用万用表完成电源轨、传感器引脚、脉冲通道的连通性排查&lt;/li&gt;
+&lt;li&gt;通过示波器抓取霍尔传感器 TTL 脉冲波形，验证信号完整性&lt;/li&gt;
+&lt;li&gt;定位并解决电机大电流负载对逻辑电源轨的瞬态干扰问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;算法验证&#34;&gt;算法验证&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在 MATLAB 中仿真 M/T 等精度测速算法&lt;/li&gt;
+&lt;li&gt;编写多组边界条件测试代码（极低转速、转速跳变）&lt;/li&gt;
+&lt;li&gt;采用 8 级滑动平均滤波消除脉冲抖动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;真值标定视觉标定法&#34;&gt;真值标定（视觉标定法）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;搭建 PWM 调速微型模拟转盘&lt;/li&gt;
+&lt;li&gt;使用手机 240fps 慢动作视频，累计 100 圈人工计数&lt;/li&gt;
+&lt;li&gt;以视觉真值为基准，验证系统在全速域的测量精度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;测试结果&#34;&gt;测试结果&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;指标&lt;/th&gt;
+					&lt;th&gt;结果&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;测速范围&lt;/td&gt;
+					&lt;td&gt;0–25 km/h&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;平均测速误差&lt;/td&gt;
+					&lt;td&gt;&lt;strong&gt;3.96%&lt;/strong&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;近场测距误差（3–10cm）&lt;/td&gt;
+					&lt;td&gt;&lt;strong&gt;趋近于零&lt;/strong&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;预警响应时间&lt;/td&gt;
+					&lt;td&gt;&lt;strong&gt;毫秒级&lt;/strong&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;关键收获&#34;&gt;关键收获&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;完整经历&amp;quot;设计 → 焊接 → 调试 → 标定 → 报告&amp;quot;的工程闭环&lt;/li&gt;
+&lt;li&gt;学会从电源噪声、信号完整性角度排查硬件故障&lt;/li&gt;
+&lt;li&gt;理解了&amp;quot;测试方案设计&amp;quot;的重要性——没有可靠的真值基准，所有测量数据都没有意义&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+  </channel>
+</rss>

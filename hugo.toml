@@ -1,0 +1,46 @@
+baseURL = 'https://musechuidiao.github.io/'
+languageCode = 'zh-cn'
+title = '王淼 | Miao Wang'
+theme = 'PaperMod'
+
+[params]
+  author = '王淼'
+  description = '电子信息工程 · 测试工程师 · 技术文档'
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  defaultTheme = 'light'
+
+  [params.homeInfoParams]
+    Title = "你好，我是王淼 👋"
+    Content = """
+    西南民族大学电子信息工程专业2026届毕业生。\n
+    懂硬件，会英语，能写测试报告。\n
+    正在寻找测试工程师 / 认证工程师方向的工作机会。
+    """
+
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/musechuidiao'
+  [[params.socialIcons]]
+    name = 'email'
+    url = 'mailto:2518640232@qq.com'
+
+[[menu.main]]
+  name = '首页'
+  url = '/'
+  weight = 1
+[[menu.main]]
+  name = '项目'
+  url = '/projects/'
+  weight = 2
+[[menu.main]]
+  name = '博客'
+  url = '/posts/'
+  weight = 3
+[[menu.main]]
+  name = '关于'
+  url = '/about/'
+  weight = 4
